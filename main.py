@@ -10,6 +10,19 @@ word_choices = [
     "prone"
 ]
 
+def get_guess():
+    guess = []
+    for i in range(5):
+
+        while True:
+            letter = input('letter: ').lower().strip()
+
+            if letter.isalpha() and len(letter) == 1:
+                break
+
+        guess.append(letter)
+    return guess
+
 def evaluate_status(correct_word_list, guess_list):
     guess_status = []
     for index in range(len(correct_word_list)):
@@ -32,7 +45,7 @@ def main():
     while guesses > 0:
         print()
         
-        guess_list = list(input('Guess: ').lower())
+        guess_list = list(get_guess())
         guess_history.append(guess_list)
         guess_status = evaluate_status(correct_word_list, guess_list)
         guess_history_status.append(guess_status)
